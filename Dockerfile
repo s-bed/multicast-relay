@@ -16,11 +16,14 @@ RUN apk update \
 # Define environment variable
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV LANG C.UTF-8
-ENV TZ America/Los_Angeles
-ENV INTERFACES br0 br50
+#ENV TZ America/
+#ENV INTERFACES eth0 eth1
 
 
 # Run  when the container launches
 # ENTRYPOINT ["./start.sh"]
 # ENTRYPOINT ["./bin/ash"]
-CMD ["sh", "./start.sh"]
+#CMD ["python3", "./multicast-relay/multicast-relay.py", "--interfaces", "$INTERFACES", "--foreground", "$OPTS"]
+ENTRYPOINT python3 ./multicast-relay/multicast-relay.py --interfaces $INTERFACES --foreground $OPTS
+
+

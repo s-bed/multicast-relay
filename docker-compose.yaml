@@ -1,0 +1,11 @@
+version: '3'
+services:
+  multicast-relay:
+    container_name: multicast-relay
+    image: sbed/multicast-relay:latest
+    restart: always
+    network_mode: host
+    environment:
+      - INTERFACES=eth0 eth1
+      - TZ=America/New_York
+      
